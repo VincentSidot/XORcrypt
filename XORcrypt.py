@@ -11,3 +11,41 @@ def XORcrypt(str,key):
 
 def XORdecrypt(str,key):
     return XORcrypt(str,key)
+    
+def CesarCrypt(str,key):
+    rep = []
+    for i in range(0,len(str)):
+        try:
+            rep += chr(ord(alphabet[(alphabet.index(str[i])+alphabet.index(key[i%len(key)]))%len(alphabet)]))
+        except:
+            rep += [' ']
+    return ''.join(rep)
+
+def CesarDecrypt(str,key):
+    rep = []
+    for i in range(0,len(str)):
+        try:
+            rep += chr(ord(alphabet[(alphabet.index(str[i])-alphabet.index(key[i%len(key)]))%len(alphabet)]))
+        except:
+            rep += [' ']
+    return ''.join(rep)
+
+    
+def PMSCrypt(str,key):
+    rep = []
+    for i in range(0,len(str)):
+        try:
+            rep += chr(ord(alphabet[(alphabet.index(str[i])+i*alphabet.index(key[i%len(key)]))%len(alphabet)]))
+        except:
+            rep += [' ']
+    return ''.join(rep)
+
+def PMSDecrypt(str,key):
+    rep = []
+    for i in range(0,len(str)):
+        try:
+            rep += chr(ord(alphabet[(alphabet.index(str[i])-i*alphabet.index(key[i%len(key)]))%len(alphabet)]))
+        except:
+            rep += [' ']
+    return ''.join(rep)
+        
