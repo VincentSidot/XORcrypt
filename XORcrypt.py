@@ -35,20 +35,28 @@ def CesarDecrypt(str,key):
     
 def PMSCrypt(str,key):
     rep = []
+    j=1
     for i in range(0,len(str)):
         try:
-            rep += chr(ord(alphabet[(alphabet.index(str[i])+i*alphabet.index(key[i%len(key)]))%len(alphabet)]))
+            rep += chr(ord(alphabet[(alphabet.index(str[i])+j*alphabet.index(key[i%len(key)]))%len(alphabet)]))
+            j+=1
         except:
-            rep += [' ']
+            if str[i] != ' ' and str[i] != '\n':
+                j+=1
+            rep += str[i]
     return ''.join(rep)
 
 def PMSDecrypt(str,key):
     rep = []
+    j=1
     for i in range(0,len(str)):
         try:
-            rep += chr(ord(alphabet[(alphabet.index(str[i])-i*alphabet.index(key[i%len(key)]))%len(alphabet)]))
+            rep += chr(ord(alphabet[(alphabet.index(str[i])-j*alphabet.index(key[i%len(key)]))%len(alphabet)]))
+            j+=1
         except:
-            rep += [' ']
+            if str[i] != ' ' and str[i] != '\n':
+                j+=1
+            rep += str[i]
     return ''.join(rep)
 
 
@@ -99,4 +107,5 @@ def CongruentialPMSDerypt(str,key):
         except:
             L += [' ']
     return ''.join(L)
+    
     
